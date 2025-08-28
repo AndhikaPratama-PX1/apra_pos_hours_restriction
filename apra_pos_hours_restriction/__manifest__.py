@@ -20,7 +20,7 @@
         ],
     },
     'images': [
-        'static/description/description.png',
+        'static/description/apra_pos_hours_restriction.png',
     ],
 
     'maintainer': 'Apra IT Solutions',
