@@ -3,14 +3,13 @@ odoo.define('apra_pos_hours_restriction.HeaderButton', function (require) {
 
     const HeaderButton = require('point_of_sale.HeaderButton');
     const Registries = require('point_of_sale.Registries');
-    const { useBus } = require('@web/core/utils/hooks');
-    const { useListener } = require("@web/core/utils/hooks");
+
 
     const InheritHeaderButton = (HeaderButton) =>
         class extends HeaderButton {
 
             FloatToTodayDatetime(closing_time_restriction) {
-                var tz = this.env.pos.user.tz
+                var tz = odoo.session_info.user_context.tz
                 let datetime_now_str = new Date().toLocaleString("en-US", { timeZone: tz });
                 let now = new Date(datetime_now_str);
                 const hours = Math.floor(closing_time_restriction);
@@ -33,7 +32,7 @@ odoo.define('apra_pos_hours_restriction.HeaderButton', function (require) {
 
 
             onClick() {
-                var tz = this.env.pos.user.tz
+                var tz = odoo.session_info.user_context.tz
                 let datetime_now_str = new Date().toLocaleString("en-US", { timeZone: tz });
                 let datetime_now = new Date(datetime_now_str);
                 

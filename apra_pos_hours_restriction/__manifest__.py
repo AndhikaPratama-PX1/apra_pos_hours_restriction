@@ -11,14 +11,8 @@
     'depends': ['point_of_sale'],
     'data': [ 
         'views/pos_views.xml',
+        'views/assets.xml',
     ],   
-    'assets': {
-        'point_of_sale.assets': [
-            'apra_pos_hours_restriction/static/src/js/*.js',
-            'apra_pos_hours_restriction/static/src/js/ChromeWidgets/*.js',
-            'apra_pos_hours_restriction/static/src/js/Popups/*.js',
-        ],
-    },
     'images': [
         'static/description/apra_pos_hours_restriction.png',
     ],

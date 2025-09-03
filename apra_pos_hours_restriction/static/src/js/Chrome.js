@@ -4,12 +4,13 @@ odoo.define('apra_pos_hours_restriction.Chrome', function (require) {
     const Chrome = require('point_of_sale.Chrome');
     const Registries = require('point_of_sale.Registries');
     const HeaderButton = require('apra_pos_hours_restriction.HeaderButton');
+    const framework = require('web.framework');
 
     const InheritChrome = (Chrome) =>
         class extends Chrome {
 
             FloatToTodayDatetime(closing_time_restriction) {
-                var tz = this.env.pos.user.tz
+                var tz = odoo.session_info.user_context.tz
                 let datetime_now_str = new Date().toLocaleString("en-US", { timeZone: tz });
                 let now = new Date(datetime_now_str);
                 const hours = Math.floor(closing_time_restriction);
@@ -26,7 +27,7 @@ odoo.define('apra_pos_hours_restriction.Chrome', function (require) {
             
             async CheckingClosingTime(){
                 let self = this
-                var tz = this.env.pos.user.tz
+                var tz = odoo.session_info.user_context.tz
                 let datetime_now_str = new Date().toLocaleString("en-US", { timeZone: tz });
                 let datetime_now = new Date(datetime_now_str);
                 const closing_time_restriction = this.FloatToTodayDatetime(this.env.pos.config.closing_time_restriction);
@@ -84,6 +85,8 @@ odoo.define('apra_pos_hours_restriction.Chrome', function (require) {
                     $(".ctr_popup .btn").on("click", function() {
                         $(".ctr_popup").remove()
                         self.env.bus.trigger('trigger_close_restriction');
+                        self.env.bus.trigger('trigger_close_restriction');
+                        framework.blockUI();
                     })
                 }
                 if(!self.env.pos.is_closing_time_restriction){

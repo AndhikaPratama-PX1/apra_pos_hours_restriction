@@ -6,20 +6,22 @@
         <field name="model">pos.config</field>
         <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//div[@id='other_devices']" position='after'>
+            <xpath expr="//div[hasclass('o_settings_container')][3]" position='inside'>
                 <div class="col-12 col-lg-6 o_setting_box" id="hours_restrict">
                     <div class="o_setting_left_pane">
                         
                     </div>
                     <div class="o_setting_right_pane">
                         <span class="o_form_label">Opening Hours Restriction</span>
-                        <div class="row">
-                            <label string="Opening Time" for="opening_time_restriction" class="col-lg-12 o_light_label"/>
-                            <field name="opening_time_restriction" string="Opening Time" widget="float_time"/>
-                        </div>
-                        <div class="row">
-                            <label string="Closing Time" for="closing_time_restriction" class="col-lg-12 o_light_label"/>
-                            <field name="closing_time_restriction" string="Closing Time" widget="float_time"/>
+                        <div>
+                            <div >
+                                <label string="Opening Time" for="opening_time_restriction" class="col-lg-12 o_light_label"/>
+                                <field name="opening_time_restriction" string="Opening Time" widget="float_time"/>
+                            </div>
+                            <div >
+                                <label string="Closing Time" for="closing_time_restriction" class="col-lg-12 o_light_label"/>
+                                <field name="closing_time_restriction" string="Closing Time" widget="float_time"/>
+                            </div>
                         </div>
                     </div>
                 </div>
